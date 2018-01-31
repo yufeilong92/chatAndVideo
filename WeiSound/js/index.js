@@ -343,6 +343,7 @@ function bindRightVideoViewData(sec) {
 	div_content.setAttribute("class", "div_span_content_video_right");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/video_img.png");
+	img.setAttribute("class","play_video_right")
 
 	if(sec > 0 && sec <= 4) {
 		div_content.setAttribute("style", "width:auto;")
@@ -367,7 +368,6 @@ function bindRightVideoViewData(sec) {
 	showContentBody.appendChild(div1);
 	var item = $("div[id*='right_content" + VideoRightId + "']");
 	var item_img = $("div[id*='right_content" + VideoRightId + "'] img:first ");
-	
 	onClickListenter(item, sec,item_img);
 	autoScroll(item);
 
@@ -393,6 +393,7 @@ function bindLeftVideoViewData(sec) {
 	div_content.setAttribute("class", "div_span_content_video_left");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/ video_left_img.png");
+	img.setAttribute("class","play_video_left")
 	var sec = parseInt(sec);
 	if(sec > 0 && sec <= 4) {
 		div_content.setAttribute("style", "width:auto;")
@@ -416,7 +417,6 @@ function bindLeftVideoViewData(sec) {
 	div1.appendChild(span);
 	showContentBody.appendChild(div1);
 	var item = $("div[id*='left_content" + VideoLiftId + "']");
-	
 	autoScroll(item)
 
 }　
@@ -427,7 +427,8 @@ function bindLeftVideoViewData(sec) {
  */
 
 
-function onClickListenter(item, sec,item_img) {
+function onClickListenter(item, sec,item_img,other_img) {
+	
 	if(item == null) {
 		alert("对象为空");
 		return;
@@ -441,6 +442,7 @@ function onClickListenter(item, sec,item_img) {
    	    	c_Sec=0;
    	    	clearTimeout(t_Time);
    	    }
+   	    $(".play_video_right").attr("src","img/video_img.png");
 	    showPaly(item,sec,item_img);
 	})
 
@@ -450,8 +452,8 @@ function onClickListenter(item, sec,item_img) {
  * @param {Object} item 选择对象
  * @param {Object} sec 秒数
  */
-function showPaly(item,sec,item_img) {
-	
+function showPaly(item,sec,item_img,othrImg) {
+
 	if(c_Sec > sec) {
 		clearTimeout(t_Time);
 		item_img.attr("src","img/video_img.png")
