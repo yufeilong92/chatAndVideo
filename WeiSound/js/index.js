@@ -34,6 +34,10 @@ var secStart = 0;
  * 记录终止秒数 
  */
 var secEnd = 0;
+/**
+ * 是否取消录音
+ */
+var isSound=false;
 
 (function() {
 
@@ -58,6 +62,9 @@ $("#img_play").click(function() {
  */
 $("#span_text").bind({
 	touchstart: function() {
+		if (isSound){
+			isSound=false;
+		}
 		handlerShowVideoView(false);
 		pingbi(event);
 		startSec();
@@ -74,9 +81,11 @@ $("#span_text").bind({
 		var a = handlerSec();
 		console.log("a===" + a);
 		if(a == 0) {
-			return
-		} else {
+			return;
+		} else if(!isSound) {
 			bindRightVideoViewData(a);
+		}else{
+			return;
 		}
 	}
 
@@ -109,8 +118,10 @@ function endtouch(e) {
 
 	console.log("距离差" + mathabs(distacne))
 	if(mathabs(distacne) > 100) {
+		isSound=true;
 		handlerShowVideoView(true)
 	} else {
+		isSound=false;
 		handlerShowVideoView(false)
 	}
 }
@@ -315,13 +326,23 @@ function bindRightVideoViewData(sec) {
 	var span = document.createElement("span");
 	span.setAttribute("class", "content_video_sec");
 	span.setAttribute("id", "content_sec_tv");
-	var sec = document.createTextNode(sec + "s");
-	span.appendChild(sec);
-
+	var sec_val = document.createTextNode(sec + "s");
+	span.appendChild(sec_val);
+	
+	
 	var div_content = document.createElement("div");
 	div_content.setAttribute("class", "div_span_content_video_right");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/video_img.png");
+    debugger
+     if(sec>0&&sec<=4){
+    	div_content.setAttribute("style","width:auto;")
+    }else if(sec>4&&sec<=10){
+    	div_content.setAttribute("style","width: 50px;")
+    }else {
+    	div_content.setAttribute("style","width: 100px;")
+    }
+
 
 	div_content.appendChild(img);
 
@@ -354,13 +375,21 @@ function bindLeftVideoViewData(sec) {
 	var span = document.createElement("span");
 	span.setAttribute("class", "content_video_sec");
 	span.setAttribute("id", "content_sec_tv");
-	var sec = document.createTextNode(sec);
-	span.appendChild(sec);
+	var sec_val = document.createTextNode(sec);
+	span.appendChild(sec_val);
 
 	var div_content = document.createElement("div");
 	div_content.setAttribute("class", "div_span_content_video_left");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/ video_left_img.png");
+    var sec=parseInt(sec);
+    if( sec>0&&sec<=4){
+    	div_content.setAttribute("style","width:auto;")
+    }else if(sec>4&&sec<=10){
+    	div_content.setAttribute("style","width: 50;")
+    }else {
+    	div_content.setAttribute("style","width: 100;")
+    }
 
 	div_content.appendChild(img);
 

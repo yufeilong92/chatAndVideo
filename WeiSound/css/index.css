@@ -131,7 +131,7 @@
  * 右布局
  */
 .div_span_content_right {
-	text-align: left;
+	text-align: right;
 	padding: 8px;
 	background: #98e165;
 	word-break: break-all;
@@ -172,12 +172,13 @@
 	position: relative;
 	border-radius: 8px;
 	margin-left: 12px;
+
 }
 /**
  * 右录音布局
  */
 .div_span_content_video_right {
-	text-align: left;
+	text-align: right;
 	padding: 8px;
 	background: #98e165;
 	word-break: break-all;
@@ -186,6 +187,7 @@
 	position: relative;
 	border-radius: 8px;
 	margin-right: 5px;
+
 }
 .div_span_content_video_right:before {
 	content: "";
@@ -196,6 +198,7 @@
 	border-style: solid;
 	border-color: transparent transparent transparent #98e165;
 }
+
 .div_span_content_video_left:before {
 	content: " ";
 	position: absolute;
@@ -243,3 +246,4 @@
 	line-height: 41px;
 	font-size: 12px;
 }
+
