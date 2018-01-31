@@ -37,7 +37,15 @@ var secEnd = 0;
 /**
  * 是否取消录音
  */
-var isSound=false;
+var isSound = false;
+/**
+ * 播放时间 
+ */
+var c_Sec = 0;
+/**
+ *计时器 
+ */
+var t_Time;
 
 (function() {
 
@@ -62,8 +70,8 @@ $("#img_play").click(function() {
  */
 $("#span_text").bind({
 	touchstart: function() {
-		if (isSound){
-			isSound=false;
+		if(isSound) {
+			isSound = false;
 		}
 		handlerShowVideoView(false);
 		pingbi(event);
@@ -84,7 +92,7 @@ $("#span_text").bind({
 			return;
 		} else if(!isSound) {
 			bindRightVideoViewData(a);
-		}else{
+		} else {
 			return;
 		}
 	}
@@ -118,10 +126,10 @@ function endtouch(e) {
 
 	console.log("距离差" + mathabs(distacne))
 	if(mathabs(distacne) > 100) {
-		isSound=true;
+		isSound = true;
 		handlerShowVideoView(true)
 	} else {
-		isSound=false;
+		isSound = false;
 		handlerShowVideoView(false)
 	}
 }
@@ -145,8 +153,8 @@ function endSec() {
 function handlerSec() {
 	var sec = secEnd - secStart;
 	var s = sec / 1000;
-    s=s.toFixed(0);
-	console.log(s+"秒数")
+	s = s.toFixed(0);
+	console.log(s + "秒数")
 	if(s <= 0) {
 		return 0;
 	} else {
@@ -281,9 +289,11 @@ function bindRightViewData(content) {
 	div1.appendChild(div_img);
 	showContentBody.appendChild(div1);
 	var item = $("div[id*='right_content" + RightId + "']");
+
 	autoScroll(item)
 
 }
+
 /**
  * 
  * @param {Object} content 显示内容
@@ -321,28 +331,26 @@ function bindRightVideoViewData(sec) {
 	var showContentBody = document.getElementById("div_showContent_body");
 	var div1 = document.createElement("div");
 	div1.setAttribute("class", "right_content");
-	div1.setAttribute("id", "right_content" + LiftId);
+	div1.setAttribute("id", "right_content" + VideoRightId);
 
 	var span = document.createElement("span");
 	span.setAttribute("class", "content_video_sec");
 	span.setAttribute("id", "content_sec_tv");
 	var sec_val = document.createTextNode(sec + "s");
 	span.appendChild(sec_val);
-	
-	
+
 	var div_content = document.createElement("div");
 	div_content.setAttribute("class", "div_span_content_video_right");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/video_img.png");
-    debugger
-     if(sec>0&&sec<=4){
-    	div_content.setAttribute("style","width:auto;")
-    }else if(sec>4&&sec<=10){
-    	div_content.setAttribute("style","width: 50px;")
-    }else {
-    	div_content.setAttribute("style","width: 100px;")
-    }
 
+	if(sec > 0 && sec <= 4) {
+		div_content.setAttribute("style", "width:auto;")
+	} else if(sec > 4 && sec <= 10) {
+		div_content.setAttribute("style", "width: 50px;")
+	} else {
+		div_content.setAttribute("style", "width: 100px;")
+	}
 
 	div_content.appendChild(img);
 
@@ -358,7 +366,10 @@ function bindRightVideoViewData(sec) {
 	div1.appendChild(div_img);
 	showContentBody.appendChild(div1);
 	var item = $("div[id*='right_content" + VideoRightId + "']");
-	autoScroll(item)
+	var item_img = $("div[id*='right_content" + VideoRightId + "'] img:first ");
+	
+	onClickListenter(item, sec,item_img);
+	autoScroll(item);
 
 }
 /**
@@ -382,14 +393,14 @@ function bindLeftVideoViewData(sec) {
 	div_content.setAttribute("class", "div_span_content_video_left");
 	var img = document.createElement("img");
 	img.setAttribute("src", "img/ video_left_img.png");
-    var sec=parseInt(sec);
-    if( sec>0&&sec<=4){
-    	div_content.setAttribute("style","width:auto;")
-    }else if(sec>4&&sec<=10){
-    	div_content.setAttribute("style","width: 50;")
-    }else {
-    	div_content.setAttribute("style","width: 100;")
-    }
+	var sec = parseInt(sec);
+	if(sec > 0 && sec <= 4) {
+		div_content.setAttribute("style", "width:auto;")
+	} else if(sec > 4 && sec <= 10) {
+		div_content.setAttribute("style", "width: 50;")
+	} else {
+		div_content.setAttribute("style", "width: 100;")
+	}
 
 	div_content.appendChild(img);
 
@@ -405,9 +416,55 @@ function bindLeftVideoViewData(sec) {
 	div1.appendChild(span);
 	showContentBody.appendChild(div1);
 	var item = $("div[id*='left_content" + VideoLiftId + "']");
+	
 	autoScroll(item)
 
 }　
+/**
+ * 监听按钮点击
+ * @param {Object} item 选择对象
+ * @param {Object} sec 秒数
+ */
+
+
+function onClickListenter(item, sec,item_img) {
+	if(item == null) {
+		alert("对象为空");
+		return;
+	}
+	if(item_img==null){
+	alert("图片为空");
+	return;
+	}
+   item.click(function() {
+   	    if (c_Sec!=0) {
+   	    	c_Sec=0;
+   	    	clearTimeout(t_Time);
+   	    }
+	    showPaly(item,sec,item_img);
+	})
+
+}
+/**
+ * 
+ * @param {Object} item 选择对象
+ * @param {Object} sec 秒数
+ */
+function showPaly(item,sec,item_img) {
+	
+	if(c_Sec > sec) {
+		clearTimeout(t_Time);
+		item_img.attr("src","img/video_img.png")
+		return;
+	}
+    if(c_Sec==0){
+     item_img.attr("src","img/play_video_right.gif")
+    }
+   	c_Sec+= 1;
+   	console.log(c_Sec);
+   	t_Time=setTimeout(function(){showPaly(item,sec,item_img)} ,1000);
+
+}
 /**
  * 
  * @param {Object} obj 父控件
@@ -418,6 +475,7 @@ function autoScroll(id) {　　
 	var a = $("#div_showContent_body").height();
 	var height = id.height();　
 	//	boy.scrollTop+=height+a;
+	console.log(height);
 	window.scrollTo(0, height + a)
 
 }
