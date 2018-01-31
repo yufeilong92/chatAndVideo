@@ -1,0 +1,245 @@
+.div_input {
+	background: lightgrey;
+	width: 100%;
+	height: 48px;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+}
+.img_sound {
+	width: 30px;
+	height: 30px;
+}
+
+.div_img {
+	height: 100%;
+	margin: 10px;
+}
+
+.div_box {
+	margin-top: 8px;
+	width: 100%;
+}
+
+.input_box {
+	line-height: 32px;
+	display: block;
+	height: 32px;
+	width: 100%;
+	font-size: 18px;
+}
+/**
+         输入框
+ * 
+ */
+.css_down_span {
+	border: 1px solid #a1a1a1;
+	display: none;
+	height: 30px;
+	width: 100%;
+	color: #A1A1A1;
+	background: white;
+	text-align: center;
+	font-size: 15px;
+	line-height: 30px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.div_send {
+	width: 80px;
+	height: 48px;
+	line-height: 48px;
+	align-content: center;
+}
+
+.span_send {
+	margin: 6px;
+	padding: 4px;
+}
+
+.span_send:hover {
+	background: darkgray;
+}
+
+.span_send:active {
+	background: darkgray;
+}
+
+.div_content {
+	width: 100%;
+	height: 100%;
+}
+
+.div_stance {
+	width: 100%;
+	height: 50px;
+	display: block;
+	/*background: red;*/
+}
+/**
+ * 父控件控制屏幕适配
+ */
+.div_showContent_body {}
+
+.left_content {
+	display: flex;
+	margin-top: 8px;
+	margin-left: 8px;
+	justify-content: flex-start;
+}
+
+.right_content {
+	display: flex;
+	position: relative;
+	right: 0px;
+	margin-top: 8px;
+	justify-content: flex-end;
+}
+
+
+}
+.div_img_lift {
+	width: 40px;
+	padding-right: 8px;
+}
+.div_img_right {
+	width: 40px;
+	padding-left: 8px;
+}
+/**
+ * 左布局
+ */
+.div_span_content_left {
+	text-align: left;
+	padding: 8px;
+	background: #98e165;
+	word-break: break-all;
+	z-index: 1;
+	margin-right: 10px;
+	position: relative;
+	border-radius: 8px;
+	margin-left: 12px;
+}
+/**
+ * 右布局
+ */
+.div_span_content_right {
+	text-align: left;
+	padding: 8px;
+	background: #98e165;
+	word-break: break-all;
+	z-index: 1;
+	margin-left: 10px;
+	position: relative;
+	border-radius: 8px;
+	margin-right: 5px;
+}
+.div_span_content_right:before {
+	content: "";
+	position: absolute;
+	left: 100%;
+	margin-top: 2px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent transparent transparent #98e165;
+}
+.div_span_content_left:before {
+	content: " ";
+	position: absolute;
+	right: 100%;
+	margin-top: 2px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent #98e165 transparent transparent;
+}
+/**
+ * 左录音布局
+ */
+.div_span_content_video_left {
+	text-align: left;
+	padding: 8px;
+	background: #98e165;
+	word-break: break-all;
+	z-index: 1;
+	margin-right: 10px;
+	position: relative;
+	border-radius: 8px;
+	margin-left: 12px;
+}
+/**
+ * 右录音布局
+ */
+.div_span_content_video_right {
+	text-align: left;
+	padding: 8px;
+	background: #98e165;
+	word-break: break-all;
+	z-index: 1;
+	margin-left: 10px;
+	position: relative;
+	border-radius: 8px;
+	margin-right: 5px;
+}
+.div_span_content_video_right:before {
+	content: "";
+	position: absolute;
+	left: 100%;
+	margin-top: 2px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent transparent transparent #98e165;
+}
+.div_span_content_video_left:before {
+	content: " ";
+	position: absolute;
+	right: 100%;
+	margin-top: 2px;
+	border-width: 8px;
+	border-style: solid;
+	border-color: transparent #98e165 transparent transparent;
+}
+
+/**
+ * 录音界面
+ */
+.dialog_body {
+	height: 100%;
+	position: fixed;
+	margin: 0 auto;
+	top: 40%;
+	left: 25%;
+	display: none;
+	background: transparent;
+	z-index: 998;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/**
+ * 录音界面
+ */
+.dialog_content {
+	background-color: rgba(20, 20, 20, 0.8);
+	padding: 8px;
+	width: 10em;
+	color: white;
+	text-align: center;
+}
+/**
+ *秒
+ */
+.content_video_sec {
+	height: 41px;
+	line-height: 41px;
+	font-size: 12px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>�ƶ�ͨ��</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+    	
+    </style>
+
+    <script type="text/javascript">
+   
+    </script>
+</head>
+<body>
+	<div id="drawLetters" style="overflow:hidden;height:200px;">
+　　　　<div id="dl">
+　　　　　　<p>恭喜133****1062用户获得10元手机话费</p>
+　　　　　　<p>恭喜153****0792用户获得50元助学代金券</p>
+　　　　　　<p>恭喜153****3890用户获得330元上课大礼包</p>
+　　　　　　<p>恭喜189****0883用户获得330元上课大礼包</p>
+　　　　　　<p>恭喜133****6823用户获得1500元现金</p>
+　　　　　　<p>恭喜153****5050用户获得330元上课大礼包</p>
+　　　　</div>
+　　</div>
+　　<script language="javascript" type="text/javascript">
+　　　　var drawLetters = document.getElementById("drawLetters");
+　　　　var dl = document.getElementById("dl");
+　　　　var speed = 20; //滚动速度值，值越大速度越慢
+　　　　function Marquee() {
+　　　　　　drawLetters.scrollTop++;
+　　　　　　var newNode = document.createElement("div"); 
+　　　　　　newNode.innerHTML = dl.innerHTML;
+　　　　　　drawLetters.insertBefore(newNode,null);
+　　　　}
+　　　　var MyMar = setInterval(Marquee, speed); //设置定时器
+　　</script>
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

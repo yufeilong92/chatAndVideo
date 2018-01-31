@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>滚动</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style type="text/css">
+    	
+    </style>
+
+    <script type="text/javascript">
+   
+    </script>
+</head>
+<body>
+	　<div id="demo">
+　　　　<span id="sp">
+　　　　　　<p>恭喜133****1231用户获得100元手机话费</p>
+　　　　　　<p>恭喜134****1232用户获得100元手机话费</p>
+　　　　　　<p>恭喜135****1233用户获得200元手机话费</p>
+　　　　　　<p>恭喜136****1234用户获得100元手机话费</p>
+　　　　　　<p>恭喜137****1235用户获得200元手机话费</p>
+　　　　　　<p>恭喜138****1236用户获得100元手机话费</p>
+　　　　</span>
+　　</div>
+
+　　<script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+
+　　<script type="text/javascript">
+
+　　　　$(document).ready(function() {
+
+　　　　　　setInterval('autoScroll("#demo")', 1000);
+　　　　});
+
+　　　　function autoScroll(obj) {
+　　　　　　$(obj).animate({
+　　　　　　　　marginTop: "-30px"
+　　　　　　}, 500, function() {
+　　　　　　　　$(this).css({marginTop:"0px"}).find("p:first").appendTo(this);
+　　　　　　});
+　　　　}
+
+　　</script>
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>
