@@ -67,12 +67,14 @@ $("#img_play").click(function() {
 })
 /**
  *对话框的显示 
+ * @todo 处理点击是有播放录音
  */
 $("#span_text").bind({
 	touchstart: function() {
 		if(isSound) {
 			isSound = false;
 		}
+		$(".play_video_right").attr("src","img/video_img.png");
 		handlerShowVideoView(false);
 		pingbi(event);
 		startSec();
@@ -426,6 +428,7 @@ function bindLeftVideoViewData(sec) {
  * 监听按钮点击
  * @param {Object} item 选择对象
  * @param {Object} sec 秒数
+ * @todo 处理点击是问题
  */
 
 
