@@ -282,7 +282,7 @@ function bindRightViewData(content) {
 	div_img.setAttribute("class", "div_img_right");
 
 	var img1 = document.createElement("img");
-	img1.setAttribute("src", "img/custom service.png");
+	img1.setAttribute("src", "img/custom_service.png");
 	div_img.appendChild(img1);
 
 	div1.appendChild(div_content);
@@ -359,7 +359,7 @@ function bindRightVideoViewData(sec) {
 	div_img.setAttribute("class", "div_img_right");
 
 	var img1 = document.createElement("img");
-	img1.setAttribute("src", "img/custom service.png");
+	img1.setAttribute("src", "img/custom_service.png");
 	div_img.appendChild(img1);
 
 	div1.appendChild(span);
