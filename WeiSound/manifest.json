@@ -198,6 +198,6 @@
                     "xxhdpi": ""/*1080P高分屏启动图片，分辨率：1080x1882*/
                 }
             }
-        }
+        },"ads":{"rp":false,"splash":false,"push":false,"spot":false},"adid":""
     }
 }
