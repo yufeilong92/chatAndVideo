@@ -366,8 +366,10 @@ function bindRightVideoViewData(sec) {
 	div1.appendChild(div_content);
 	div1.appendChild(div_img);
 	showContentBody.appendChild(div1);
+	
 	var item = $("div[id*='right_content" + VideoRightId + "']");
 	var item_img = $("div[id*='right_content" + VideoRightId + "'] img:first ");
+	item.data("data",{sec_number:sec,id:""});
 	onClickListenter(item, sec,item_img);
 	autoScroll(item);
 
@@ -443,6 +445,8 @@ function onClickListenter(item, sec,item_img,other_img) {
    	    	clearTimeout(t_Time);
    	    }
    	    $(".play_video_right").attr("src","img/video_img.png");
+   	    sec=item.data("data").sec_number;
+   	    console.log("读取的要播放的秒数="+sec);
 	    showPaly(item,sec,item_img);
 	})
 
